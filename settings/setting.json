@@ -1,6 +1,20 @@
 {
-    "ownerNumber": "628xxxxxxxxxx@c.us",
-    "memberLimit": 5,
-    "groupLimit": 5,
-    "prefix": "#"
-  }
+    "ownerNumber": [
+      "6288245246774@c.us",
+      "17125665656@c.us",
+      "6289609144474@c.us"
+    ],
+    "memberLimit": 10,
+    "groupLimit": 10,
+    "prefix": "!",
+    "blackList":[],
+    "staffList":[
+      "6281244478075@c.us"
+    ],
+    "DevBot": [
+      "6288245246774@c.us",
+      "17125665656@c.us",
+      "6289609144474@c.us"
+    ],
+    "welcome": "Halo @${event.who.replace('@c.us', '')} 👋\nSelamat datang di *Grup ${name}*\n═══════════════════\nSelamat bergabung dan juga semoga betah disini.\n═══════════════════\n"
+}
