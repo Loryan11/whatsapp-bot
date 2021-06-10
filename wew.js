@@ -3,7 +3,6 @@
  BOT WHATSAPP OPEN-WA LIB
  Source https://github.com/zhwzein/ZENZ-OPENWA
  By Zen's
-
  */
 
 // NPM MODULES
@@ -160,47 +159,47 @@ module.exports = zein = async (zc = new Client(), message) => {
 
         // PLAYER ROLE
         const levelRole = level.getLevelingLevel(senderr, _level)
-        var role = 'Warrior III'
+        var role = 'Bronze III'
         if (levelRole <= 5) {
-            role = 'Warrior II'
+            role = 'Bronze II'
         } else if (levelRole <= 10) {
-            role = 'Warrior I'
+            role = 'Bronze I'
         } else if (levelRole <= 15) {
-            role = 'Elite III'
+            role = 'Silver III'
         } else if (levelRole <= 20) {
-            role = 'Elite II'
+            role = 'Silver II'
         } else if (levelRole <= 25) {
-            role = 'Elite I'
+            role = 'Silver I'
         } else if (levelRole <= 30) {
-            role = 'Master III'
-        } else if (levelRole <= 35) {
-            role = 'Master II'
+            role = 'Gold III'
         } else if (levelRole <= 40) {
-            role = 'Master I'
-        } else if (levelRole <= 45) {
-            role = 'GrandMaster III'
+            role = 'Gold II'
         } else if (levelRole <= 50) {
-            role = 'GrandMaster II'
-        } else if (levelRole <= 55) {
-            role = 'GrandMaster I'
-        } else if (levelRole <= 60) {
-            role = 'Epic III'
+            role = 'Gold I'
         } else if (levelRole <= 65) {
-            role = 'Epic II'
-        } else if (levelRole <= 70) {
-            role = 'Epic I'
+            role = 'Platinum III'
         } else if (levelRole <= 75) {
-            role = 'Legend III'
-        } else if (levelRole <= 80) {
-            role = 'Legend II'
+            role = 'Platinum II'
         } else if (levelRole <= 85) {
-            role = 'Legend I'
-        } else if (levelRole <= 90) {
-            role = 'Mythic'
-        } else if (levelRole <= 95) {
-            role = 'Mythical Glory'
-        } else if (levelRole >= 100) {
-            role = 'Immortal'
+            role = 'Platinum I'
+        } else if (levelRole <= 100) {
+            role = 'Diamond III'
+        } else if (levelRole <= 120) {
+            role = 'Diamond II'
+        } else if (levelRole <= 150) {
+            role = 'Pro I'
+        } else if (levelRole <= 175) {
+            role = 'Pro III'
+        } else if (levelRole <= 200) {
+            role = 'Ace II'
+        } else if (levelRole <= 250) {
+            role = 'Ace I'
+        } else if (levelRole <= 300) {
+            role = 'Veteran'
+        } else if (levelRole <= 400) {
+            role = 'Hero'
+        } else if (levelRole >= 500) {
+            role = 'Saviour'
         }
 
         // LEVELING
@@ -215,7 +214,7 @@ module.exports = zein = async (zc = new Client(), message) => {
                     level.addLevelingLevel(senderr, 1, _level)
                     const userLevel = level.getLevelingLevel(senderr, _level)
                     const fetchXp = 10 * Math.pow(userLevel, 2) + 50 * userLevel + 100
-                    await zc.reply(from, `*LEVEL UP*\n\n*XP :* ${level.getLevelingXp(senderr, _level)} / ${fetchXp}\n*Level :* ${currentLevel} -> ${level.getLevelingLevel(senderr, _level)}`, id)
+                    await zc.reply(from, `*⌬ _RANK UP_ ⌬*\n\nXp : ${level.getLevelingXp(senderr, _level)} / ${fetchXp}\nLevel : ${currentLevel} -> ${level.getLevelingLevel(senderr, _level)}`, id)
                 }
             } catch (err) {
                 console.error(err)
@@ -471,12 +470,12 @@ module.exports = zein = async (zc = new Client(), message) => {
         // ANTI SPAM LOG
         if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) {
         console.log(color('[SPAM]', 'red'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
-		return zc.reply(from, `_bersabar untuk cooldown 10 detik_`, id)
+		return zc.reply(from, `_cooldown 10sec_`, id)
         }
         
         if (isCmd && msgFilter.isFiltered(from) && isGroupMsg) {
         console.log(color('[SPAM]', 'red'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(name || formattedTitle))
-		return zc.reply(from, `_bersabar untuk cooldown 10_`, id)
+		return zc.reply(from, `_cooldown 10sec_`, id)
         }
 
         // LOG
@@ -558,10 +557,10 @@ module.exports = zein = async (zc = new Client(), message) => {
 
         if (chats == 'Menu 16'){ zc.reply(from, msg.menuSaver(), id)}
 
-        if (chats == 'zein') {
+        if (chats == 'zeon') {
             await zc.sendPtt(from, './media/music/areply/apa.mp3' , id)}
 
-        if (chats == 'zen') {
+        if (chats == 'zeyca') {
             await zc.sendPtt(from, './media/music/areply/apa.mp3' , id)}
 		
 		if (isCmd && !isPremium && !isOwner) msgFilter.addFilter(from)
@@ -585,7 +584,7 @@ module.exports = zein = async (zc = new Client(), message) => {
             break
             case 'register':
             case 'verify':
-                if (isRegistered) return await zc.reply(from, 'Akun kamu sudah terverfikasi', id)
+                if (isRegistered) return await zc.reply(from, '⌬ Akun telah terverifikasi.', id)
                 const namaUser = `${pushname}`
                 const umurUser = '20'
                 const serialUser = register.createSerial(10)
@@ -626,104 +625,6 @@ module.exports = zein = async (zc = new Client(), message) => {
                 })
             break
 
-            // ISLAMI
-            case 'kota':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                await zc.reply(from, msg.wait(), id)
-            try {
-                const kota = await axios.get(`https://lolhuman.herokuapp.com/api/sholat/kota?apikey=${config.lol}`)
-                const { result } = kota.data
-                let drk = `*_Nama Kota Dari Sabang Ke Merauke :_*\n\n`
-                for (let i = 0; i < kota.data.result.length; i++)
-                drk += `- ${result[i].nama}\n`
-                zc.sendText(from, drk, id)
-            } catch (err) {
-                zc.reply(from, 'Ada error sistem!', id)
-            }
-            break
-            case 'jadwal':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!query) return await zc.reply(from, `Kota Apa? Contoh : ketik ${prefix}jadwal Jakarta\nUntuk melihat daftar kota Ketik ${prefix}kota `, id)
-                await zc.reply(from, msg.wait(), id)
-            try {
-                const jadwal = await axios.get(`https://lolhuman.herokuapp.com/api/sholat/${query}?apikey=${config.lol}`)
-                const { result } = jadwal.data
-                let jdw = `*_Berikut Jadwal Dari Kota ${query} :_*\n\n`
-                jdw += `Wilayah : ${result.wilayah}\nTanggal : ${result.tanggal}\nSahur : ${result.sahur}\nImsak : ${result.imsak}\nSubuh : ${result.subuh}\nTerbit : ${result.terbit}\nDhuha : ${result.dhuha}\nDzuhur : ${result.dzuhur}\nAshar : ${result.ashar}\nMaghrib : ${result.maghrib}\nIsya : ${result.isya}\n`
-                zc.sendText(from, jdw, id)
-            } catch (err) {
-                zc.reply(from, 'Ada error sistem!', id)
-            }
-            break
-            case 'asmaul':
-            case 'asmaulhusna':
-            if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-			if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                //if (args.length == 0) return zc.reply(from, `Usage: ${prefix + command} query\nExample: ${prefix + command} naruto`, id)
-                get_result = await fetchJson(`https://lolhuman.herokuapp.com/api/asmaulhusna?apikey=${config.lol}`)
-                get_result = get_result.result
-                txt = `index : ${get_result.index}\n`
-                txt += `latin : ${get_result.latin}\n`
-                txt += `arab : ${get_result.ar}\n`
-                txt += `id : ${get_result.id}\n`
-                txt += `en : ${get_result.en}\n`
-                zc.sendText(from, txt, id)
-            break
-            case 'kisahnabi':
-            case 'kisah':
-            if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-			if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (args.length == 0) return zc.reply(from, `Usage: ${prefix + command} query\nExample: ${prefix + command} muhammad`, id)
-                get_result = await fetchJson(`https://lolhuman.herokuapp.com/api/kisahnabi/${query}?apikey=${config.lol}`)
-                get_result = get_result.result
-                txt = `name : ${get_result.name}\n`
-                txt += `kelahiran : ${get_result.thn_kelahiran}\n`
-                txt += `age : ${get_result.age}\n`
-                txt += `place : ${get_result.place}\n\n`
-                txt += `story :\n\n${get_result.story}\n`
-                zc.sendText(from, txt, id)
-            break
-            case 'audiosurah':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (args.length == 0) return zc.reply(from, `Usage: ${prefix + command} nomor surah\nExample: ${prefix + command} 1\n\nUntuk melihat list surah ketik ${prefix}listsurah`, id)
-                await zc.sendFileFromUrl(from, `https://lolhuman.herokuapp.com/api/quran/audio/${query}?apikey=${config.lol}`)
-            break
-            case 'listsurah':
-                get_result = await fetchJson(`http://api.lolhuman.xyz/api/quran?apikey=${config.lol}`)
-                get_result = get_result.result
-                ini_txt = '*List Surah :*\n\n'
-                for (var x in get_result) {
-                    ini_txt += `${x}. ${get_result[x]}\n`
-                }
-                zc.sendText(from, ini_txt, id)
-            break
-            case 'audioayat':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (args.length == 0) return zc.reply(from, `Usage: ${prefix + command} nomor surah | ayat\nExample: ${prefix + command} 56 | 1\n\nUntuk melihat list surah ketik ${prefix}listsurah`, id)
-                const surat = q.substring(0, q.indexOf('|') - 1)
-                const ayat = q.substring(q.lastIndexOf('|') + 2)
-                await zc.sendFileFromUrl(from, `https://lolhuman.herokuapp.com/api/quran/audio/${surat}/${ayat}?apikey=${config.lol}`)
-            break
-
-            // Reply
-            case 'masuk':
-                await zc.reply(from, '*Group Shiro* : https://chat.whatsapp.com/J9FmTrDcGzeFvr19YZMHZW', id)
-            break
-            case 'textpro':
-                zc.sendText(from, msg.menuTextpro())
-            break
-            case 'ephoto':
-                zc.sendText(from, msg.menuEphoto())
-            break
-            case 'photoxy':
-                zc.sendText(from, msg.menuPhotoxy())
-            break
-            case 'design':
-                zc.sendText(from, msg.menuDesain())
-            break
-
             // STICKER MAKER
             case 'bunder':
             case 'circle':
@@ -745,13 +646,13 @@ module.exports = zein = async (zc = new Client(), message) => {
                     await zc.reply(from, 'Error!', id)
                 }
             } else {
-                    await zc.reply(from, `Untuk membuat sticker circle\nsilahkan *upload* atau reply foto dengan caption ${prefix}circle`, id)
+                    await zc.reply(from, `⌬ Untuk membuat sticker circle, silahkan *upload* atau reply foto dengan caption ${prefix}circle`, id)
             }
             break
             case 'findsticker':
             case 'findstick':
 			    if (!isRegistered) return await zc.reply(from, msg.notRegistered(pushname), id)
-                if (!q) return await zc.reply(from, 'mau nyari sticker apa?', id)
+                if (!q) return await zc.reply(from, '⌬ Mau cari stiker apa?', id)
                 if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
                 limit.addLimit(senderr, _limit, isPremium, isOwner)
                 await zc.reply(from, msg.wait(), id)
@@ -766,41 +667,10 @@ module.exports = zein = async (zc = new Client(), message) => {
                         })
                 } catch (err) {
                     console.error(err)
-                    await zc.reply(from, 'Error!', id)
+                    await zc.reply(from, '⌬ Error!', id)
                 }
 	        break
-            case 'anal':
-            case 'kuni':
-            case 'smug': 
-            case 'baka':
-            case 'solog': 
-            case 'kiss': 
-            case 'ngif':
-            case 'nsfw_neko_gif':
-            case 'random_hentai_gif':
-            case 'pussy':
-            case 'feetg':
-            case 'bj':
-            case 'feed': 
-            case 'cum':
-            case 'cuddle':
-            case 'classic':
-            if (!isRegistered) return await zc.reply(from, msg.notRegistered(pushname), id)
-            if (!isNsfw) return await zc.reply(from, msg.notNsfw(), id)
-            if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-            limit.addLimit(senderr, _limit, isPremium, isOwner)
-            await zc.reply(from, msg.wait(), id)
-			ranp = getRandom('.gif')
-			rano = getRandom('.webp')
-			buffer = `http://api.lolhuman.xyz/api/random2/${command}?apikey=${config.lol}`
-			exec(`wget ${buffer} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-				if (err) return zc.reply(from, 'error!', id)
-                fs.unlinkSync(ranp)
-				buff = fs.readFileSync(rano)
-				zc.sendImageAsSticker(from, buff, { author: 'setiker', pack: 'zen' }, id)
-				fs.unlinkSync(rano)
-			})
-		    break
+            
             case 'takestick':
             case 'take':
                 if (!isPremium) return await zc.reply(from, msg.notPremium(), id)
@@ -808,7 +678,7 @@ module.exports = zein = async (zc = new Client(), message) => {
                 if (quotedMsg && quotedMsg.type == 'sticker') {
                 if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
                     limit.addLimit(senderr, _limit, isPremium, isOwner)
-                        if (!q.includes('|')) return await zc.reply(from, `*FORMAT SALAH*\n\nReply sticker dengan caption *${prefix}takestick pack | author*\n\nContoh: ${prefix}takestick zein | uwu`, id)
+                        if (!q.includes('|')) return await zc.reply(from, `*⌬ _Format Salah_ ⌬*\n\nReply sticker dengan caption *${prefix}takestick pack | author*\n\nContoh: ${prefix}takestick zeycaa | hai`, id)
                         await zc.reply(from, msg.wait(), id)
                         const packnames = q.substring(0, q.indexOf('|') - 1)
                         const authors = q.substring(q.lastIndexOf('|') + 2)
@@ -820,7 +690,7 @@ module.exports = zein = async (zc = new Client(), message) => {
                             await zc.reply(from, 'Error!', id)
                         })
                     } else {
-                        await zc.reply(from, `Reply sticker yang ingin dicolong dengan caption *${prefix}takestick pack | author*\n\nContoh: ${prefix}takestick zein | uwu`, id)
+                        await zc.reply(from, `⌬ Reply sticker yang ingin diambil dengan caption *${prefix}takestick pack | author*\n\nContoh: ${prefix}takestick zeycaa | hai`, id)
                     }
             break
             case 'sgifwm':
@@ -836,12 +706,12 @@ module.exports = zein = async (zc = new Client(), message) => {
                         const videoBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
                         await zc.sendMp4AsSticker(from, videoBase64, { fps: 10, startTime: `00:00:00.0`, endTime : `00:00:06.0`, loop: 0 }, { author: `${authorPacksgif}`, pack: `${namaPacksgif}`, keepScale: true })
                             .then(async () => {
-                                console.log(`Sticker processed for ${processTime(t, moment())} seconds`)
+                                console.log(`⌬ Sticker berhasil diproses dalam ${processTime(t, moment())} seconds`)
                                 
                             })
                     } catch (err) {
                         console.error(err)
-                        await zc.reply(from, `Ukuran video terlalu besar\nMaksimal size adalah 1MB!`, id)
+                        await zc.reply(from, `⌬ Sticker gagal diproses\nUkuran video melebihi 1 Mb.`, id)
                     }
                 } else if (isQuotedGif || isQuotedVideo) {
                     const namaPacksgif = q.substring(0, q.indexOf('|') - 1)
@@ -852,15 +722,15 @@ module.exports = zein = async (zc = new Client(), message) => {
                         const videoBase64 = `data:${quotedMsg.mimetype};base64,${mediaData.toString('base64')}`
                         await zc.sendMp4AsSticker(from, videoBase64, { fps: 10, startTime: `00:00:00.0`, endTime : `00:00:06.0`, loop: 0 }, { author: `${authorPacksgif}`, pack: `${namaPacksgif}`, crop: false })
                             .then(async () => {
-                                console.log(`Sticker processed for ${processTime(t, moment())} seconds`)
+                                console.log(`⌬ Sticker berhasil diproses dalam ${processTime(t, moment())} seconds`)
                                 
                             })
                     } catch (err) {
                         console.error(err)
-                        await zc.reply(from, `Ukuran video terlalu besar\nMaksimal size adalah 1MB!`, id)
+                        await zc.reply(from, `⌬ Sticker gagal diproses\nUkuran video melebihi 1 Mb.`, id)
                     }
                 } else {
-                    await zc.reply(from, `Untuk membuat stickergif dengan watermark\ngunakan ${prefix}sgifwm author | packname`, id)
+                    await zc.reply(from, `⌬ Pembuatan sticker dengan watermark.\n\nGunakan ${prefix}sgifwm author | packname`, id)
                 }
             break
             case 'stickernocrop':
@@ -877,13 +747,13 @@ module.exports = zein = async (zc = new Client(), message) => {
                     const mediaData = await decryptMedia(encryptMedia, uaOverride)
                     const imageBase64 = `data:${_mimetype};base64,${mediaData.toString('base64')}`
                     await zc.sendImageAsSticker(from, imageBase64, { keepScale: true, author: 'setiker', pack: 'zen' })
-                    console.log(`Sticker processed for ${processTime(t, moment())} seconds`)
+                    console.log(`⌬ Sticker berhasil diproses dalam ${processTime(t, moment())} seconds`)
                 } catch (err) {
                     console.error(err)
                     await zc.reply(from, 'Error!', id)
                 }
             } else {
-                    await zc.reply(from, `Untuk membuat sticker no crop\nsilahkan *upload* atau reply foto dengan caption ${prefix}stnc`, id)
+                    await zc.reply(from, `⌬ Pembuatan sticker no crop\n\Silahkan *upload* atau reply foto dengan caption ${prefix}stnc`, id)
             }
             break
             case 'sticker':
@@ -900,13 +770,13 @@ module.exports = zein = async (zc = new Client(), message) => {
                     const mediaData = await decryptMedia(encryptMedia, uaOverride)
                     const imageBase64 = `data:${_mimetype};base64,${mediaData.toString('base64')}`
                     await zc.sendImageAsSticker(from, imageBase64, { author: 'setiker', pack: 'zen' })
-                    console.log(`Sticker processed for ${processTime(t, moment())} seconds`)
+                    console.log(`⌬ Sticker berhasil diproses dalam ${processTime(t, moment())} seconds`)
                 } catch (err) {
                     console.error(err)
-                    await zc.reply(from, 'Error!', id)
+                    await zc.reply(from, '⌬ Error!', id)
                 }
             } else {
-                    await zc.reply(from, `Untuk membuat sticker\nsilahkan *upload* atau reply foto dengan caption ${prefix}sticker`, id)
+                    await zc.reply(from, `⌬ Pembuatan sticker\n\nSilahkan *upload* atau reply foto dengan caption ${prefix}sticker`, id)
             }
             break
             case 'stickergif':
@@ -921,12 +791,12 @@ module.exports = zein = async (zc = new Client(), message) => {
                         const videoBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
                         await zc.sendMp4AsSticker(from, videoBase64, { fps: 10, startTime: `00:00:00.0`, endTime : `00:00:06.0`, loop: 0 }, { author: 'setiker', pack: 'zen' })
                             .then(async () => {
-                                console.log(`Sticker processed for ${processTime(t, moment())} seconds`)
+                                console.log(`⌬ Sticker berhasil diproses dalam ${processTime(t, moment())} seconds`)
                                 
                             })
                     } catch (err) {
                         console.error(err)
-                        await zc.reply(from, `Ukuran video terlalu besar\nMaksimal size adalah 1MB!`, id)
+                        await zc.reply(from, `⌬ Sticker gagal diproses\nUkuran video melebihi 1 Mb.`, id)
                     }
                 } else if (isQuotedGif || isQuotedVideo) {
                     await zc.reply(from, msg.wait(), id)
@@ -935,15 +805,15 @@ module.exports = zein = async (zc = new Client(), message) => {
                         const videoBase64 = `data:${quotedMsg.mimetype};base64,${mediaData.toString('base64')}`
                         await zc.sendMp4AsSticker(from, videoBase64, { fps: 10, startTime: `00:00:00.0`, endTime : `00:00:06.0`, loop: 0 }, { author: 'setiker', pack: 'zen' })
                             .then(async () => {
-                                console.log(`Sticker processed for ${processTime(t, moment())} seconds`)
+                                console.log(`⌬ Sticker berhasil diproses dalam ${processTime(t, moment())} seconds`)
                                 
                             })
                     } catch (err) {
                         console.error(err)
-                        await zc.reply(from, `Ukuran video terlalu besar\nMaksimal size adalah 1MB!`, id)
+                        await zc.reply(from, `⌬ Sticker gagal diproses\nUkuran video melebihi 1 Mb.`, id)
                     }
                 } else {
-                    await zc.reply(from, `Untuk mengconvert GIF/Video menjadi stikergif silahkan upload video/gif dengan caption ${prefix}stikergif`, id)
+                    await zc.reply(from, `⌬ Untuk mengconvert GIF/Video menjadi stikergif silahkan upload video/gif dengan caption ${prefix}stikergif`, id)
                 }
             break
             case 'stickertoimg':
@@ -960,7 +830,7 @@ module.exports = zein = async (zc = new Client(), message) => {
                         await zc.sendFile(from, imageBase64, 'sticker.jpg', '', id)
                     } catch (err) {
                         console.error(err)
-                        await zc.reply(from, 'Error!', id)
+                        await zc.reply(from, '⌬ Error!', id)
                     }
                 } else {
                     await zc.reply(from, msg.wrongFormat(), id)
@@ -1154,52 +1024,7 @@ module.exports = zein = async (zc = new Client(), message) => {
             await convertSticker(shape, authori, packi, mediaData, type, from).then((res) => zc.sendRawWebpAsSticker(from, res.toString("base64")))
             }
             break
-            case 'wasted':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (isMedia && type === 'image' || isQuotedImage) {
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                    const encryptMediaWt = isQuotedImage ? quotedMsg : message
-                    const dataPotoWt = await decryptMedia(encryptMediaWt, uaOverride)
-                    const fotoWtNya = await uploadImages(dataPotoWt, `fotoProfilWt.${senderr}`)
-                    await zc.reply(from, msg.wait(), id)
-                    await zc.sendImageAsSticker(from, `https://some-random-api.ml/canvas/wasted?avatar=${fotoWtNya}`, { keepScale: true, author: 'setiker', pack: 'zen'})
-                    console.log('Success sending Wasted image!')
-                } else {
-                    await zc.reply(from, msg.wrongFormat(), id)
-                }
-            break
-            case 'invert':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (isMedia && type === 'image' || isQuotedImage) {
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                    const encryptMediaWt = isQuotedImage ? quotedMsg : message
-                    const dataPotoWt = await decryptMedia(encryptMediaWt, uaOverride)
-                    const fotoWtNya = await uploadImages(dataPotoWt, `fotoProfilWt.${senderr}`)
-                    await zc.reply(from, msg.wait(), id)
-                    await zc.sendImageAsSticker(from, `https://lolhuman.herokuapp.com/api/editor/invert?apikey=${config.lol}&img=${fotoWtNya}`, { keepScale: true, author: 'setiker', pack: 'zen'})
-                    console.log('Success sending invert image!')
-                } else {
-                    await zc.reply(from, msg.wrongFormat(), id)
-                }
-            break
-            case 'pixel':
-            case 'pixelate':
-            if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (isMedia && type === 'image' || isQuotedImage) {
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                    const encryptMediaWt = isQuotedImage ? quotedMsg : message
-                    const dataPotoWt = await decryptMedia(encryptMediaWt, uaOverride)
-                    const fotoWtNya = await uploadImages(dataPotoWt, `fotoProfilWt.${senderr}`)
-                    await zc.reply(from, msg.wait(), id) 
-                    await zc.sendImageAsSticker(from, `https://lolhuman.herokuapp.com/api/editor/pixelate?apikey=${config.lol}&img=${fotoWtNya}`, { keepScale: true, author: 'setiker', pack: 'zen'})
-                    console.log('Success sending invert image!')
-                } else {
-                    await zc.reply(from, msg.wrongFormat(), id)
-                }
-            break
+        
             case 'pelangi':
                 if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
                 if (isMedia && type === 'image' || isQuotedImage) {
@@ -1215,21 +1040,7 @@ module.exports = zein = async (zc = new Client(), message) => {
                     await zc.reply(from, msg.wrongFormat(), id)
                 }
             break
-            case 'sepia':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (isMedia && type === 'image' || isQuotedImage) {
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                    const encryptMediaWt = isQuotedImage ? quotedMsg : message
-                    const dataPotoWt = await decryptMedia(encryptMediaWt, uaOverride)
-                    const fotoWtNya = await uploadImages(dataPotoWt, `fotoProfilWt.${senderr}`)
-                    await zc.reply(from, msg.wait(), id)
-                    await zc.sendImageAsSticker(from, `https://some-random-api.ml/canvas/sepia?avatar=${fotoWtNya}`, { keepScale: true, author: 'setiker', pack: 'zen'})
-                    console.log('Success sending Wasted image!')
-                } else {
-                    await zc.reply(from, msg.wrongFormat(), id)
-                }
-            break
+            
             case 'merah':
                 if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
                 if (isMedia && type === 'image' || isQuotedImage) {
@@ -1243,71 +1054,6 @@ module.exports = zein = async (zc = new Client(), message) => {
                     console.log('Success sending Wasted image!')
                 } else {
                     await zc.reply(from, msg.wrongFormat(), id)
-                }
-            break
-            case 'hijau':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (isMedia && type === 'image' || isQuotedImage) {
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                    const encryptMediaWt = isQuotedImage ? quotedMsg : message
-                    const dataPotoWt = await decryptMedia(encryptMediaWt, uaOverride)
-                    const fotoWtNya = await uploadImages(dataPotoWt, `fotoProfilWt.${senderr}`)
-                    await zc.reply(from, msg.wait(), id)
-                    await zc.sendImageAsSticker(from, `https://some-random-api.ml/canvas/green?avatar=${fotoWtNya}`, { keepScale: true, author: 'setiker', pack: 'zen'})
-                    console.log('Success sending Wasted image!')
-                } else {
-                    await zc.reply(from, msg.wrongFormat(), id)
-                }
-            break
-            case 'biru':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (isMedia && type === 'image' || isQuotedImage) {
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                    const encryptMediaWt = isQuotedImage ? quotedMsg : message
-                    const dataPotoWt = await decryptMedia(encryptMediaWt, uaOverride)
-                    const fotoWtNya = await uploadImages(dataPotoWt, `fotoProfilWt.${senderr}`)
-                    await zc.reply(from, msg.wait(), id)
-                    await zc.sendImageAsSticker(from, `https://some-random-api.ml/canvas/blue?avatar=${fotoWtNya}`, { keepScale: true, author: 'setiker', pack: 'zen'})
-                    console.log('Success sending Wasted image!')
-                } else {
-                    await zc.reply(from, msg.wrongFormat(), id)
-                }
-            break
-            case 'glass':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (isMedia && type === 'image' || isQuotedImage) {
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                    const encryptMediaWt = isQuotedImage ? quotedMsg : message
-                    const dataPotoWt = await decryptMedia(encryptMediaWt, uaOverride)
-                    const fotoWtNya = await uploadImages(dataPotoWt, `fotoProfilWt.${senderr}`)
-                    await zc.reply(from, msg.wait(), id)
-                    await zc.sendImageAsSticker(from, `https://some-random-api.ml/canvas/glass?avatar=${fotoWtNya}`, { keepScale: true, author: 'setiker', pack: 'zen'})
-                    console.log('Success sending Wasted image!')
-                } else {
-                    await zc.reply(from, msg.wrongFormat(), id)
-                }
-            break
-            case 'telesticker':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!q) return await zc.reply(from, `*FORMAT SALAH*\n\nBeri caption *${prefix}ig link*\n\nContoh: ${prefix}ig linknya`, id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                try {
-                    await axios.get(`https://lolhuman.herokuapp.com/api/telestick?apikey=${config.lol}&url=${q}`)
-                        .then(async ({ data }) => {
-                            for (let i = 0; i < 5; i++) {
-                                const teled  = await data.result.sticker[i]
-                                await zc.sendImageAsSticker(from, teled, { keepScale: true, author: 'setiker', pack: 'zen'})
-                                console.log('Success sending YouTube results!') 
-                            } 
-                        })
-                } catch (err) {
-                    console.error(err)
-                    await zc.reply(from, 'Error!', id)
                 }
             break
 
@@ -1496,86 +1242,7 @@ module.exports = zein = async (zc = new Client(), message) => {
                         await zc.reply(from, 'Error!', id)
                     })
             break
-            case 'cocofun':
-                if (!isPremium) return await zc.reply(from, msg.notPremium(), id)
-                if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-                    if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                    if (!q) return await zc.reply(from, msg.wrongFormat(), id)
-                    if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                    console.log('Download Cocofun')
-                    const cocof = await axios.get(`https://lolhuman.herokuapp.com/api/cocofun?apikey=${config.lol}&url=${q}`)
-                    hasil = `Judul : ${cocof.data.result.title}\nTag : ${cocof.data.result.tag}\nLikes : ${cocof.data.result.likes}\nDislike : ${cocof.data.result.dislike}\nViews : ${cocof.data.result.views}\nUploader : ${cocof.data.result.uploader}`
-                    await zc.sendFileFromUrl(from, `${cocof.data.result.nowm}`, 'cocof.mp4', hasil, id)
-                        .then(() => console.log('Success sending quotes..'))
-                        .catch(async (err) => {
-                            console.error(err)
-                            await zc.reply(from, 'ID Tidak Ketemu', id)
-                        })
-            break
-            case 'pin':
-			    if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!q) return await zc.reply(from, `*FORMAT SALAH*\n\nBeri caption *${prefix}pins query*\n\nContoh: ${prefix}pins hanekawa`, id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                    await zc.reply(from, msg.wait(), id) 
-                    const pin = await axios.get(`https://lolhuman.herokuapp.com/api/pinterest?apikey=${config.lol}&query=${q}`)
-                    let pint = pin.data.result
-			    zc.sendFileFromUrl(from, pint, 'pin.jpg', '', id)
-	        break
-            case 'wall':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!isGroupMsg) return zc.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-                if (!q) return await zc.reply(from, msg.wrongFormat(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                const wal1 = await fetch(`https://lolhuman.herokuapp.com/api/wallpaper?apikey=${config.lol}&query=${q}`)
-                const wal2 = await wal1.json()
-                zc.sendFileFromUrl(from, wal2.result, 'randomwall.jpg', `Hasil Dari ${q}`, id)
-                .then(() => console.log('Success sending wall..'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-			break
-            case 'pixiv':
-                if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                if (!q) return await zc.reply(from, msg.wrongFormat(), id)
-                await zc.reply(from, `_*NSFW WARNING*_\nMohon Tunggu Sebentar..`, id)
-                console.log('Sending pixiv Pict..')
-                await zc.sendFileFromUrl(from, `https://lolhuman.herokuapp.com/api/pixiv?apikey=${config.lol}&query=${q}`, '_*NSFW WARNING*_','', id)
-                    .then(() => console.log('Success sending pixiv image!'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'pixivdl':
-                if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                if (args.length == 0) return reply(`Usage: ${prefix + command} pixiv_id\nExample: ${prefix + command} 63456028`)
-                await zc.sendFileFromUrl(from, `http://api.lolhuman.xyz/api/pixivdl/${q}?apikey=${config.lol}`,`pixdl.jpg`,`nah ini`, id)
-			break
-            case 'konachan':
-                if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                if (!q) return await zc.reply(from, msg.wrongFormat(), id)
-                await zc.reply(from, `_*NSFW WARNING*_\nMohon Tunggu Sebentar..`, id)
-                console.log('Sending konachan Pict..')
-                await zc.sendFileFromUrl(from, `https://lolhuman.herokuapp.com/api/konachan?apikey=${config.lol}&query=${q}`, '_*NSFW WARNING*_','', id)
-                    .then(() => console.log('Success sending konachan image!'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
+
             case 'tiktok': 
             case 'nowm':
                 if (!isPremium) return await zc.reply(from, msg.notPremium(), id)
@@ -1915,152 +1582,9 @@ module.exports = zein = async (zc = new Client(), message) => {
                 if (!bsk) zc.reply(from, `*FORMAT SALAH*\n\nKetik caption *${prefix}bisakah Text*\n\nContoh: ${prefix}bisakah dia meninggal`, id)
                 await zc.sendText(from, `Pertanyaan: *${bsk}* \nJawaban: ${jbsk}`)
 			break
-	        case 'santet':
-			if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-            limit.addLimit(senderr, _limit, isPremium, isOwner)
-            if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-            if (!isGroupMsg) return zc.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-                if (mentionedJidList.length === 0) return zc.reply(from, `Tag member yang mau disantet\n\nContoh : ${prefix}santet @tag | kalo berak kaga di siram`, id)
-                if (args.length === 1) return zc.reply(from, `Masukkan alasan kenapa menyantet dia!!\n\nContoh : ${prefix}santet @tag | kalo berak kaga di siram`, id)
-                const santet = ['Muntah Paku','Meninggoy','Meninggal','Berak Paku','Muntah Rambut','Muntah Jembut','Ketempelan MONYET!!!','Ketempelan Tuyul','Berak di Celana Terus','Menjadi Gila','Menjadi Bodoh','Berak Beling','Berak Batu']
-                const terima1 = santet[Math.floor(Math.random() * (santet.length))]
-                const nyante = body.slice(7)
-                const target = nyante.split('|')[0]
-                const alasan = nyante.split('|')[1]
-                await zc.sendTextWithMentions(from, `Santet terkirim ke ${target}\n\nAlasan: ${alasan}\n\nJenis Santet Yang di Terima:\n*${terima1}*`)
-			break
-			case 'kutuk':
-			if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-            limit.addLimit(senderr, _limit, isPremium, isOwner)
-            if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-            if (!isGroupMsg) return zc.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-                if (mentionedJidList.length === 0) return zc.reply(from, `Tag member yang mau disantet\n\nContoh : ${prefix}kutuk @tag | kalo berak kaga di siram`, id)
-                if (args.length === 1) return zc.reply(from, `Masukkan alasan kenapa menyantet dia!!\n\nContoh : ${prefix}kutuk @tag | kalo berak kaga di siram`, id)
-                const kutuk = ['Sapi','Batu','Babi','pohon pisang','janda','bangsat','buaya','Jangkrik','Kambbing','Bajing','kang seblak','kang gorengan','kang siomay','badut ancol','Tai Badak','Kebo','Badak','tai kotok','Bwebwek','Orang Suksesss...... tapi boong','Beban Keluarga']
-                const terima2 = kutuk[Math.floor(Math.random() * (kutuk.length))]
-                const nyantey = body.slice(7)
-                const target2 = nyantey.split('|')[0]
-                const alasan2 = nyantey.split('|')[1]
-                await zc.sendTextWithMentions(from, `Kutukan terkirim ke ${target2}\n\nAlasan: ${alasan2}\n\nJenis Santet Yang di Terima:\n*${terima2}*`)
-			break
-            case 'pbucin':
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!isGroupMsg) return zc.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-                if (args.length < 1) return zc.reply(from, 'Namanya siapa?', id)
-                persenbucin = ["4%\n\nHadehh🤦","9%\n\nMasih Kecil Dah Bucin Ae","17%\n\nNakk Masih Kecil","28%\n\nYoalahh hmm","34%\n\nMayan Lah","48%\n\nGatau","59%\n\nBiasa Kang Bucin","62%\n\nHadehhh🏃","74%\n\nbucen Teroosss","83%\n\nSekali² kek Ga bucin Gitu","97%\n\nHadehh Pakboi²","100%\n\nHadehhh Ini Bukan Bucin Tapi Pakboi","29%\n\nKasian Mana Masih Muda","94%\n\nDasar Pakboi","75%\n\nYa Ampun"]
-                const pbucin = persenbucin[Math.floor(Math.random() * persenbucin.length)]
-                zc.sendText(from, 'Persen Bucin: '+query+'\nJawaban : '+ pbucin)
-		    break
-            case 'watak':
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!isGroupMsg) return zc.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-                if (args.length < 1) return zc.reply(from, 'Namanya siapa?', id)
-                wa =["penyayang","pemurah","Pemarah","Pemaaf","Penurut","Baik","baperan","Baik Hati","penyabar","Uwu","top deh, pokoknya","Suka Membantu"]
-                const tak = wa[Math.floor(Math.random() * wa.length)]
-			    zc.sendText(from, 'Pertanyaan : *'+query+'*\n\nJawaban : '+ tak)
-            break 
-            case 'hobby':
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!isGroupMsg) return zc.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-                if (args.length < 1) return zc.reply(from, 'Namanya siapa?', id)
-                hob =["ngeue sapi","ngeue kambing","Memasak","Membantu Atok","Mabar","Nobar","Sosmed an","Membantu Orang lain","Nonton Anime","Nonton Drakor","Naik Motor","Nyanyi","Menari","Bertumbuk","Menggambar","Foto fotoan Ga jelas","Maen Game","Berbicara Sendiri"]
-                const by = hob[Math.floor(Math.random() * hob.length)]
-                zc.sendText(from, 'Pertanyaan : *'+query+'*\n\nJawaban : '+ by)
-            break 
-
+	        
             // FUN MENU
-            case 'cekkelamin':
-            if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-            if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-            limit.addLimit(senderr, _limit, isPremium, isOwner)
-			const seanl = await axios.get(`https://api.genderize.io/?name=${body.slice(12)}`)
-			const name11 = seanl.data.name
-            const genderr = seanl.data.gender
-			await zc.reply(from, `    「 Cek Kelamin \n\nNama : ${name11} \n Jenis Kelamin : ${genderr}\n\nMale : Laki-Laki\nFemale : Perempuan\nNull : Error`, id)
-			break
-            case 'cekmati':
-            if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-            if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-            limit.addLimit(senderr, _limit, isPremium, isOwner)
-			const predea = await axios.get(`https://api.agify.io/?name=${body.slice(9)}`)
-			await zc.reply(from, `Nama : ${predea.data.name}\n*Mati Pada Umur :* ${predea.data.age} Tahun.\n\n_Cepet Cepet Tobat Bro Soalnya Mati ga ada yang tau_`, id)
-			break
-            case 'creepyfact': // By Kris
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                    if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                    await zc.reply(from, msg.wait(), id)
-                    fetch('https://raw.githubusercontent.com/TheSploit/CreepyFact/main/creepy.txt')
-                    .then((res) => res.text())
-                    .then(async (body) => {
-                        let creepyx = body.split('\n')
-                        let creepyz = creepyx[Math.floor(Math.random() * creepyx.length)]
-                        await zc.reply(from, creepyz, id)
-                })
-                    .catch(async (err) => {
-                    console.error(err)
-                    await zc.reply(from, 'Error!', id)
-                })
-            break
-            case 'zodiac':
-            case 'zodiak':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (args.length !== 1) return await zc.reply(from, msg.wrongFormat(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                fun.zodiak(args[0])
-                    .then(async ({ result }) => {
-                        if (result.status === 204) {
-                            return await zc.reply(from, result.ramalan, id)
-                        } else {
-                            let ramalan = `Zodiak: ${result.zodiak}\n\nRamalan: ${result.ramalan}\n\nAngka laksek: ${result.nomorKeberuntungan}\n\n${result.motivasi}\n\n${result.inspirasi}`
-                            await zc.reply(from, ramalan, id)
-                                .then(() => console.log('Success sending zodiac fortune!'))
-                        }
-                    })
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'wancak':
-                if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                console.log('Sending wancak meme..')
-                await zc.sendFileFromUrl(from, `https://lolhuman.herokuapp.com/api/onecak?apikey=${config.lol}`, 'wancak.jpg','', id)
-                    .then(() => console.log('Success sending wancak image!'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-		    case 'simih':
-			if (!isGroupMsg) return zc.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
-            if (!isGroupAdmins) return zc.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
-			if (args.length !== 1) return zc.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
-			if (args[0] == 'on') {
-				_simih.push(senderr)
-				fs.writeFileSync('./database/group/simi.json', JSON.stringify(_simih))
-                zc.reply(from, 'Mengaktifkan bot simi-simi!', id)
-			} else if (args[0] == 'off') {
-				let inxx = _simih.indexOf(senderr)
-				_simih.splice(inxx, 1)
-				fs.writeFileSync('./database/group/simi.json', JSON.stringify(_simih))
-				zc.reply(from, 'Menonaktifkan bot simi-simi!', id)
-			} else {
-				zc.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
-			}
-			break
+		
             case 'family100': //By: VideFrelan
              if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
 				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
@@ -2132,17 +1656,18 @@ module.exports = zein = async (zc = new Client(), message) => {
                     })
             break
             case 'casino':
+            case 'taruhan':
                 if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
 				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
                 if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
                 limit.addLimit(senderr, _limit, isPremium, isOwner)
 
-                if (!q) return await zc.reply(from, `Kirim perintah ${prefix}casino taruhan\n\nContoh: ${prefix}casino 5000`, id)
+                if (!q) return await zc.reply(from, `⌬ Kirim perintah ${prefix}casino untuk taruhan\n\nContoh: ${prefix}casino 5000`, id)
                 const betcasino = q * 1
-                if (checkSaldouser(senderr) <= betcasino) return zc.reply(from, `Saldomu tidak cukup untuk taruhan Rp. ${convertBalanceToString(q)}`, id)
+                if (checkSaldouser(senderr) <= betcasino) return zc.reply(from, `⌬ Saldomu tidak cukup untuk taruhan Rp. ${convertBalanceToString(q)}`, id)
                 if (checkSaldouser(senderr) >= betcasino) {
                     confirmSaldo(senderr, betcasino)
-                    zc.reply(from, `Saldo dikurangkan -Rp ${convertBalanceToString(q)}`, id)
+                    zc.reply(from, `⌬ Saldo dikurangkan -Rp ${convertBalanceToString(q)}`, id)
                     const hadiahcsn = betcasino * 2
                     const maxcasino = 30
                     const thisyou = Math.floor(Math.random() * maxcasino) + 1;
@@ -2166,14 +1691,14 @@ module.exports = zein = async (zc = new Client(), message) => {
                 if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
                 limit.addLimit(senderr, _limit, isPremium, isOwner)
 
-                if (!q.includes('|')) return await zc.reply(from, `Kirim perintah ${prefix}suit gunting | jumlah\nContoh: ${prefix}suit gunting | 5000\n\nKet:\n- gunting\n- batu\n- kertas`, id)
+                if (!q.includes('|')) return await zc.reply(from, `⌬ Kirim perintah ${prefix}suit gunting | jumlah\nContoh: ${prefix}suit gunting | 5000\n\nKet:\n- gunting\n- batu\n- kertas`, id)
                 const userspilih = q.substring(0, q.indexOf('|') - 1)
                 const jumlahsuit = q.substring(q.lastIndexOf('|') + 2)
 
-                if (checkSaldouser(senderr) <= jumlahsuit) return zc.reply(from, `Saldomu tidak cukup untuk taruhan Rp. ${convertBalanceToString(jumlahsuit)}`, id)
-                if (jumlahsuit.length > 5) return zc.reply(from, `maximal Rp. 90.000`, id)
+                if (checkSaldouser(senderr) <= jumlahsuit) return zc.reply(from, `⌬ Saldomu tidak cukup untuk taruhan Rp. ${convertBalanceToString(jumlahsuit)}`, id)
+                if (jumlahsuit.length > 5) return zc.reply(from, `⌬ Max Rp. 90.000`, id)
                 if (checkSaldouser(senderr) >= jumlahsuit) {
-                if (!userspilih.match(/batu|gunting|kertas/)) return zc.reply(from, `Format salah`, id)
+                if (!userspilih.match(/batu|gunting|kertas/)) return zc.reply(from, `⌬ Format salah`, id)
                 if (userspilih.match(/batu|gunting|kertas/)) {
                 zc.reply(from, `Saldo dikurangkan -Rp ${convertBalanceToString(jumlahsuit)}`, id)
                 confirmSaldo(senderr, jumlahsuit)
@@ -2194,47 +1719,42 @@ module.exports = zein = async (zc = new Client(), message) => {
                 }
 
                 if ( userspilih == computer ) {
-                    zc.reply(from, `Pertandingan Seri!\nSaldomu dikembalikan Rp ${convertBalanceToString(jumlahsuit)}`, id)
+                    zc.reply(from, `⌬ Pertandingan Seri!\nSaldomu dikembalikan Rp ${convertBalanceToString(jumlahsuit)}`, id)
                     addSaldo(senderr, balikin)
 
                 } else if ( userspilih == 'batu' ) {
                     if( computer == 'gunting' ) {
                         // hasil = 'MENANG';
-                        zc.reply(from, `Kamu memilih Batu dan bot Gunting kamu menang! +Rp ${hadiahtostr}`, id)
+                        zc.reply(from, `⌬ Kamu memilih Batu dan bot Gunting kamu menang! +Rp ${hadiahtostr}`, id)
                         addSaldo(senderr, hadiahnye)
                     } else {
-                        zc.reply(from, `You Lose, Kamu memilih Batu dan bot memilih Kertas`, id)
+                        zc.reply(from, `⌬ You Lose, Kamu memilih Batu dan bot memilih Kertas`, id)
                     }
 
                 } else if ( userspilih == 'gunting' ) {
                     if( computer == 'batu' ) {
                         // hasil = 'MENANG';
-                        zc.reply(from, `You Lose, Kamu memilih Gunting dan bot memilih Batu, Dan kamu tidak dapat apa-apa`, id)
+                        zc.reply(from, `⌬ You Lose, Kamu memilih Gunting dan bot memilih Batu, Dan kamu tidak dapat apa-apa`, id)
                     } else {
-                        zc.reply(from, `Kamu memilih Gunting dan bot Kertas kamu menang! +Rp ${hadiahtostr}`, id)
+                        zc.reply(from, `⌬ Kamu memilih Gunting dan bot Kertas kamu menang! +Rp ${hadiahtostr}`, id)
                         addSaldo(senderr, hadiahnye)
                     }
 
                 } else if ( userspilih == 'kertas' ) {
                     if( computer == 'batu' ) {
                         // hasil = 'MENANG';
-                        zc.reply(from, `Kamu memilih Kertas dan bot Batu kamu menang! +Rp ${hadiahtostr}`, id)
+                        zc.reply(from, `⌬ Kamu memilih Kertas dan bot Batu kamu menang! +Rp ${hadiahtostr}`, id)
                         addSaldo(senderr, hadiahnye)
                     } else {
-                        zc.reply(from, `You Lose, Kamu memilih Kertas dan bot memilih Gunting`, id)
+                        zc.reply(from, `⌬ You Lose, Kamu memilih Kertas dan bot memilih Gunting`, id)
                     }
                     } 
                 } else {
-                    zc.reply(from, `Salah, gunakan huruf kecil\nExample:\n\nk = kertas\ng = gunting\nb = batu\nContoh: ${prefix}suit g | 15000`, id)
+                    zc.reply(from, `⌬ Salah, gunakan huruf kecil\nExample:\n\nk = kertas\ng = gunting\nb = batu\nContoh: ${prefix}suit g | 15000`, id)
                 }
                 }
             break
 
-            case 'palak':
-                if (!isRegistered) return zc.reply(from, msg.notRegistered(), id)
-                if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(sender, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-            
             case 'fight':
                 if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
 				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
@@ -2250,13 +1770,13 @@ module.exports = zein = async (zc = new Client(), message) => {
                 const isifight = [
                     'AI Berhasil Membuatmu takut dengan ototnya.',
                     'AI Berhasil Membantingmu dengan sangat kuat.',
-                    'AI Berhasil Membuat Bijimu pecah.',
-                    'AI Berhasil Membuat patah tulang leher.',
-                    'AI Berhasil Melempar Molotov Tepat di Pala mu.',
-                    'AI Berhasil Menendang dengan jurus loncat tendang.',
+                    'AI Berhasil Menghantammu dengan bata.',
+                    'AI Berhasil Membuatmu patah tulang leher.',
+                    'AI Berhasil Membuatmu takut dengan tatonya.',
+                    'AI Berhasil Menendang tepat di ulu hati.',
                     'AI Berhasil Menyantet badanmu hingga terbagi 2',
-                    'AI Berhasil Membuat mu mati dengan 1 pukulan karena dia saitama',
-                    'AI Berhasil Memutuskan Tangan mu hingga kamu kehabisan darah dan mati.'
+                    'AI Berhasil Membuatmu tewas dengan besi putih.',
+                    'AI Berhasil Menebas kepalamu hingga wafat.'
                 ]
 
                 if (checkSaldouser(senderr) <= bestfight) return zc.reply(from, `Saldomu tidak cukup untuk taruhan Rp. ${convertBalanceToString(q)}`, id)
@@ -2264,15 +1784,15 @@ module.exports = zein = async (zc = new Client(), message) => {
                 confirmSaldo(senderr, bestfight)
 
                 const menanglawan = [
-                    'KAMU Berhasil Membuat mu takut dengan ototnya.',
-                    'KAMU Berhasil Membanting mu dengan sangat kuat.',
-                    'KAMU Berhasil Membuat Biji Tyt*d mu pecah.',
-                    'KAMU Berhasil Membuat patah tulang leher.',
-                    'KAMU Berhasil Melempar Molotov Tepat di Pala mu.',
-                    'KAMU Berhasil Menendang dengan jurus loncat tendang.',
-                    'KAMU Berhasil Menyantet badan mu hingga terbagi 2',
-                    'KAMU Berhasil Membuat mu mati dengan 1 pukulan karena dia saitama',
-                    'KAMU Berhasil Memutuskan Tangan mu hingga kamu kehabisan darah dan mati.'
+                    'Anda Berhasil Membuat mu takut dengan ototnya.',
+                    'Anda Berhasil Membanting mu dengan sangat kuat.',
+                    'Anda Berhasil Membuat Biji Tyt*d mu pecah.',
+                    'Anda Berhasil Membuat patah tulang leher.',
+                    'Anda Berhasil Melempar Molotov Tepat di Pala mu.',
+                    'Anda Berhasil Menendang dengan jurus loncat tendang.',
+                    'Anda Berhasil Menyantet badan mu hingga terbagi 2',
+                    'Anda Berhasil Membuat mu mati dengan 1 pukulan karena dia saitama',
+                    'Anda Berhasil Memutuskan Tangan mu hingga kamu kehabisan darah dan mati.'
                 ]
 
                     const hadiahfight = bestfight * 2 - 2000
@@ -2281,338 +1801,19 @@ module.exports = zein = async (zc = new Client(), message) => {
                     //addSaldo(senderr, hadiahfight)
 
                     if (mathfight == `${menanglawan}`) {
-                    zc.reply(from, `「 RESULT-FIGHT 」
-
+                    zc.reply(from, `*⌬ _Fight Result_ ⌬*
 ${mathfights}
-
-Congrats You win!
+Victory!
 Reward: +Rp. ${convertBalanceToString(rewardslot)}`, id)
                     addSaldo(senderr, rewardslot)
                     } else {
-                        zc.reply(from, `「 RESULT-FIGHT 」
-
+                        zc.reply(from, `*⌬ _Fight Result_ ⌬*
 ${mathfight}
-
 Sorry You lost`, id)
                     }
                 }
             break
-
-            case 'simi':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!isGroupMsg) return await zc.reply(from, msg.groupOnly(), id)
-                if (!q) return await zc.reply(from, `kenapa? mau nanya apa kak ${pushname}?`, id)
-				if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                fun.simi2(q)
-                    .then(async ({ result }) => {
-                        await zc.reply(from, result, id)
-                    })
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, `Hah?\nkalo nanya jangan pake emoji kak`, id)
-                    })
-            break
-            case 'darkjokes':
-            case 'darkjoke':
-                if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                console.log('Sending wancak meme..')
-                await zc.sendFileFromUrl(from, `https://lolhuman.herokuapp.com/api/meme/darkjoke?apikey=${config.lol}`, 'darkjokes.jpg','', id)
-                    .then(() => console.log('Success sending wancak image!'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'artinama':
-                if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                if (!q) return await zc.reply(from, msg.wrongFormat(), id)
-                const artipler = await axios.get(`https://videfikri.com/api/primbon/artinama/?nama=${q}`)
-                const plerrr = artipler.data.result
-                await zc.reply(from, `${plerrr.arti}\n${plerrr.desk}`, id)
-            break
-            case 'bucin':
-                if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-			    if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                fetch('https://raw.githubusercontent.com/HasamiAini/Bot_Takagisan/main/bucin.txt')
-                .then(res => res.text())
-                .then(body => {
-                let splitnix = body.split('\n')
-                let randomnix = splitnix[Math.floor(Math.random() * splitnix.length)]
-                zc.reply(from, randomnix, id)
-					})
-					.catch(() => {
-					zc.reply(from, '*Gomenasai Onichan Ada yang error!*', id)
-					})
-			break
-			case 'fiersa':
-                if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                fetch('https://raw.githubusercontent.com/AlvioAdjiJanuar/Fiersa-Besari/main/fiersa-besari.txt')
-                .then(res => res.text())
-                .then(body => {
-                let ff = body.split('\n')
-                let randomff = ff[Math.floor(Math.random() * ff.length)]
-                zc.reply(from, randomff, id)
-                })
-                .catch(() => {
-                zc.reply(from, 'Ada yang Error!', id)
-                })
-            break
-            case 'bapak': // By Kris
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!q) return zc.reply(from, msg.wrongFormat(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                axios.get(`https://api.terhambar.com/bpk?kata=${q}`)
-                    .then(async (res) => await zc.reply(from, res.data.text, id))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'quotes':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                misc.quotes()
-                .then(async ({ result }) => {
-                    await zc.reply(from, `*Quotes :* ${result.quotes}\n\n*Author :* ${result.author}`, id)
-                })
-            break
-            case 'meme':
-                if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                console.log('Sending meme meme..')
-                await zc.sendFileFromUrl(from, `https://lolhuman.herokuapp.com/api/meme/memeindo?apikey=${config.lol}`, 'mem2.jpg','AOWWKKW', id)
-                    .then(() => console.log('Success sending wancak image!'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'meme2':
-			if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-			const memeindnya = await fetch('https://api.zeks.xyz/api/memeindo?apikey=apivinz')
-			const mememsg = await memeindnya.json()
-			zc.sendFileFromUrl(from, mememsg.result, 'meme.jpg', 'Nih bang dah jadi', id)
-			break
-            case 'worldmeme':
-            case 'memew':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!isGroupMsg) return zc.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-            const memew = await axios.get('https://meme-api.herokuapp.com/gimme');
-            hasil = `Judul : ${memew.data.title}\nAuthor : ${memew.data.author}`
-            await zc.sendFileFromUrl(from, `${memew.data.url}`, 'sr.jpg', hasil, id)
-            break
-            case 'fakta':
-			if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                console.log('Sending random quote...')
-                const faktas = await axios.get('https://videfikri.com/api/fakta')
-                await zc.sendText(from, `*Faktanya* : ${faktas.data.result.fakta}`, id)
-                    .then(() => console.log('Success sending quotes..'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'dilan':
-			if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                console.log('Sending random quote...')
-                const dilan = await axios.get(`https://lolhuman.herokuapp.com/api/quotes/dilan?apikey=${config.lol}`)
-                await zc.sendText(from, `_*Quotes Dilan*_\n\n${dilan.data.result}`, id)
-                    .then(() => console.log('Success sending quotes..'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-			case 'kanye':
-			if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                console.log('Sending random quote...')
-                const kanye = await axios.get(`https://dhyzx-free-api.herokuapp.com/api/quotes/kanye?apikey=undefined`)
-                await zc.sendText(from, `${kanye.data.result.text_id}\n\n-Kanye West`, id)
-                    .then(() => console.log('Success sending quotes..'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'quotenime':
-            case 'quotesnime':
-			case 'quotesanime':
-			if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                console.log('Sending random quote...')
-                const quotenime = await axios.get(`https://lolhuman.herokuapp.com/api/random/quotesnime?apikey=${config.lol}`)
-                await zc.reply(from, `_${quotenime.data.result.quote}_\n\n_Character : ${quotenime.data.result.character}_\n_Anime : ${quotenime.data.result.anime}_\n_Episode : ${quotenime.data.result.episode}_`, id)
-                    .then(() => console.log('Success sending quotes..'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'cekumur':
-			if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                console.log('Sending random quote...')
-                const tebakumur = await axios.get(`https://lolhuman.herokuapp.com/api/tebakumur?apikey=${config.lol}&name=${q}`)
-                await zc.sendText(from, `*Nama :* ${tebakumur.data.result.name}\n*Umur :* ${tebakumur.data.result.age}`, id)
-                    .then(() => console.log('Success sending quotes..'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'funik':
-                if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-                    if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                    if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                    console.log('Sending random quote...')
-                    const funik = await axios.get(`https://lolhuman.herokuapp.com/api/random/faktaunik?apikey=${config.lol}`)
-                    await zc.sendText(from, `_*Fakta Unik*_\n\n${funik.data.result}`, id)
-                        .then(() => console.log('Success sending quotes..'))
-                        .catch(async (err) => {
-                            console.error(err)
-                            await zc.reply(from, 'Error!', id)
-                        })
-            break
-			case 'motivasi':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                misc.motivasi()
-                    .then(async (body) => {
-                        const motivasiSplit = body.split('\n')
-                        const randomMotivasi = motivasiSplit[Math.floor(Math.random() * motivasiSplit.length)]
-                        await zc.sendText(from, randomMotivasi)
-                    })
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-			case 'puisi': // By Kris
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                axios.get('https://masgi.herokuapp.com/api/puisi2')
-                    .then(async (res) => await zc.reply(from, res.data.data, id))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'cerpen': // By Kris
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                axios.get('https://masgi.herokuapp.com/api/cerpen')
-                    .then(async (res) => await zc.reply(from, res.data.data, id))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'cerhor':
-            if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-                if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                console.log('Sending wattpad Profile') 
-                await zc.reply(from, msg.wait(), id)
-                const cerhor = await axios.get(`https://lolhuman.herokuapp.com/api/ceritahoror?apikey=${config.lol}`)
-                hasil = `*Title :* ${cerhor.data.result.title}\n${cerhor.data.result.desc}`
-                await zc.sendFileFromUrl(from, `${cerhor.data.result.thumbnail}`, 'cerhor.jpg', hasil, id)
-                    .then(() => console.log('Success sending quotes..'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'ID Tidak Ketemu', id)
-                    })
-            break
-            case 'twister':
-			if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                console.log('Sending random quote...')
-                const twister = await axios.get(`https://docs-jojo.herokuapp.com/api/tongue_twister`)
-                await zc.reply(from, `${twister.data.result}`, id)
-                    .then(() => console.log('Success sending quotes..'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'sindir':
-            case 'nyindir':
-			if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                console.log('Sending random quote...')
-                const sindir = await axios.get(`https://leyscoders-api.herokuapp.com/api/skak?apikey=freeKeY`)
-                await zc.reply(from, `${sindir.data.result}`, id)
-                    .then(() => console.log('Success sending quotes..'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
-            case 'wiki':
-            case 'wikipedia':
-			if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
-				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
-                if (!q) return await zc.reply(from, 'mau nyari wiki tentang apa?', id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                console.log('Sending random quote...')
-                const wiki = await axios.get(`https://lolhuman.herokuapp.com/api/wiki?apikey=${config.lol}&query=${query}`)
-                await zc.reply(from, `${wiki.data.result}`, id)
-                    .then(() => console.log('Success sending quotes..'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
+            
             case 'lirik':
 			if (!isRegistered) return  zc.reply(from, msg.notRegistered(), id)
 				if (!isGroupMsg) return zc.reply(from, msg.groupOnly(), id)
@@ -2629,56 +1830,7 @@ Sorry You lost`, id)
                         await zc.reply(from, 'Error!', id)
                     })
             break
-            case 'toxic':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, toxic(), id)
-            break
-            case 'say':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!q) return await zc.reply(from, msg.wrongFormat(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.sendText(from, q)
-            break
-            break
-            case 'balikhuruf':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(pushname), id)
-                if (!query) return await zc.reply(from, `Untuk membalik huruf\ngunakan ${prefix}balikhuruf teks\n\nContoh: ${prefix}balikhuruf halo`, id)
-                fun.balikhuruf(query)
-                .then(async ({result}) => {
-                    await zc.reply(from, result.kata, id)
-                })
-                .catch(async (err) => {
-                    console.error(err)
-                    await zc.reply(from, 'Error!', id)
-                })
-            break
-            case 'hitunghuruf':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(pushname), id)
-                if (!query) return await zc.reply(from, `Untuk menghitung jumlah huruf\ngunakan ${prefix}hitunghuruf teks\n\nContoh: ${prefix}hitunghuruf halo`, id)
-                fun.hitunghuruf(query)
-                .then(async ({result}) => {
-                    await zc.reply(from, result.jumlah, id)
-                })
-                .catch(async (err) => {
-                    console.error(err)
-                    await zc.reply(from, 'Error!', id)
-                })
-            break
-            case 'hilih':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(pushname), id)
-                if (!query) return await zc.reply(from, `Untuk membuat hilih teks\ngunakan ${prefix}hilih teks\n\nContoh: ${prefix}hilih halah bacot`, id)
-                fun.hilihteks(query)
-                .then(async ({result}) => {
-                    await zc.reply(from, result.kata, id)
-                })
-                .catch(async (err) => {
-                    console.error(err)
-                    await zc.reply(from, 'Error!', id)
-                })
-            break
+          
             // END OF FUN MENU
 
             // STALKER
@@ -2778,11 +1930,8 @@ Sorry You lost`, id)
 			const cepeter = `_Hasil Perjodohan Zeycaa-BOT_
 			
 @${aku.replace(/[@c.us]/g, '')}
-
 💏💑 dengan 💏💑
-
 @${kamu.replace(/[@c.us]/g, '')}
-
 *Jangan Lupa Kasih PJ Segroup*`
             await zc.sendTextWithMentions(from, cepeter)
             break
@@ -2839,84 +1988,7 @@ Sorry You lost`, id)
                     await zc.reply(from, msg.wrongFormat(), id)
                 }
             break
-            case 'receipt':
-            case 'resep':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!q) return await zc.reply(from, msg.wrongFormat(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                try {
-                    misc.resep(q)
-                        .then(async ({ result }) => {
-                            await zc.sendFileFromUrl(from, result.image, `${result.title}.jpg`, msg.receipt(result), id)
-                            console.log('Success sending food receipt!')
-                        })
-                } catch (err) {
-                    console.error(err)
-                    await zc.reply(from, 'Error!', id)
-                }
-            break
-            case 'tts':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!q) return await zc.reply(from, msg.wrongFormat(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                const ptt = tts('id')
-                try {
-                    ptt.save(`${q}.mp3`, q, async () => {
-                        await zc.sendPtt(from, `${q}.mp3`, id)
-                        fs.unlinkSync(`${q}.mp3`)
-                    })
-                } catch (err) {
-                    console.error(err)
-                    await zc.reply(from, 'Error!', id)
-                }
-            break
-            case 'corona': // by CHIKAA CHANTEKKXXZZ
-            case 'coronavirus':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!q) return await zc.reply(from, 'Negara mana?', id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                misc.corona(q)
-                    .then(async (res) => {
-                        await zc.sendText(from, '🌎️ Covid Info - ' + q.charAt(0).toUpperCase() + q.slice(1) + ' 🌍️\n\n✨️ Total Cases: ' + `${res.cases}` + '\n📆️ Today\'s Cases: ' + `${res.todayCases}` + '\n☣️ Total Deaths: ' + `${res.deaths}` + '\n☢️ Today\'s Deaths: ' + `${res.todayDeaths}` + '\n⛩️ Active Cases: ' + `${res.active}` + '.')
-                        console.log('Success sending Result!')
-                    })
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Negara mana?', id)
-                    })
-            break
-            case 'translate':
-            case 'trans':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!q.includes('|')) return await zc.reply(from, msg.wrongFormat(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                const texto = q.substring(0, q.indexOf('|') - 1)
-                const languaget = q.substring(q.lastIndexOf('|') + 2)
-                translate(texto, {to: languaget}).then(res => {zc.reply(from, res.text, id)})
-            break
-            case 'distance':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!q) return await zc.reply(from, msg.wrongFormat(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                const kotaAsal = q.substring(0, q.indexOf('|') - 1)
-                const kotaTujuan = q.substring(q.lastIndexOf('|') + 2)
-                misc.distance(kotaAsal, kotaTujuan)
-                    .then(async ({ result }) => {
-                        if (result.response !== 200) {
-                            await zc.reply(from, 'Error!', id)
-                        } else {
-                            await zc.reply(from, result.data, id)
-                            console.log('Success sending distance info!')
-                        }
-                    })
-            break
+
             // END OF OTHERS
             
             // SPAMMER
@@ -3006,31 +2078,6 @@ Sorry You lost`, id)
             break
 
             // MEDIA
-            case 'trash':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                    limit.addLimit(senderr, _limit, isPremium, isOwner)
-                try {
-                    await zc.reply(from, msg.wait(), id)
-                    for (let i = 0; i < mentionedJidList.length; i++) {
-                        const ypic = await zc.getProfilePicFromServer(mentionedJidList[i])
-                        if (ypic === undefined) {
-                            var ypfps = errorImg
-                        } else {
-                            ypfps = ypic
-                        }
-                    }
-                    canvas.Canvas.trash(ypfps)
-                        .then(async (buffer) => {
-                            canvas.write(buffer, `./temp/${senderr}_trash.png`)
-                            await zc.sendFile(from, `./temp/${senderr}_trash.png`, `${senderr}_trash.png`, '', id)
-                            fs.unlinkSync(`./temp/${senderr}_trash.png`)
-                        })
-                } catch (err) {
-                    console.error(err)
-                    await zc.reply(from, 'Error!', id)
-                }
-            break
             
             case 'imgtopdf':
             case 'pdf':
@@ -3131,21 +2178,7 @@ Sorry You lost`, id)
                     await zc.reply(from, 'Error!', id)
                 }
             break
-            case 'quotemaker':
-            case 'qmaker':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!q) return await zc.reply(from, msg.wrongFormat(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                console.log('Creating writing...')
-                await zc.sendFileFromUrl(from, `https://lolhuman.herokuapp.com/api/quotemaker?apikey=${config.lol}&text=${q}`, 'nulis.jpg', '', id)
-                    .then(() => console.log('Success sending write image!'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break
+
             case 'playbutton':     		           
 			if (args.length === 0) return zc.reply(from, `Kirim perintah #playbutton teks, contoh #playbutton Zein`, id)              
 			zc.reply(from, msg.wait(), id) 
@@ -3164,41 +2197,6 @@ Sorry You lost`, id)
 			await zc.sendFileFromUrl(from, errorur121, 'error.png', '💔 Sedang error ')                      
 			}           
 			break
-            case 'ytc':
-            case 'ytcomment':
-                if (!q.includes('|')) return await zc.reply(from, `*FORMAT SALAH*\n\nReply dengan caption *${prefix}ytc username | comment*\n\nContoh: ${prefix}ytc zenuwu | meresahkan`, id)
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                const ppytc = await zc.getProfilePicFromServer(senderr)
-                if (ppytc === undefined) {
-                    var ppyt = errorImg
-                } else {
-                    ppyt = ppytc
-                }
-                const datappyt = await bent('buffer')(ppyt)
-                const linkppyt = await uploadImages(datappyt, `${senderr}_ph`)
-				await zc.reply(from, msg.wait(), id)
-				const ytc1 = q.substring(0, q.indexOf('|') - 1)
-                const ytc2 = q.substring(q.lastIndexOf('|') + 2)
-                const ytcom = `https://lolhuman.herokuapp.com/api/ytcomment?apikey=${config.lol}&username=${ytc1}&comment=${ytc2}&img=${linkppyt}`
-                zc.sendFileFromUrl(from, ytcom, `ytc.jpg`, `${ytc1} ${ytc2}`, id)
-				console.log('Success!')
-            break
-            case 'tolol':
-                if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
-                if (!q) return await zc.reply(from, `*FORMAT SALAH*\n\nBeri caption *${prefix}tolol nama*\n\nContoh: ${prefix}tolol zenuwu`, id)
-                if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
-                limit.addLimit(senderr, _limit, isPremium, isOwner)
-                await zc.reply(from, msg.wait(), id)
-                console.log('Creating Tolol text...')
-                await zc.sendFileFromUrl(from, `https://lolhuman.herokuapp.com/api/toloserti?apikey=${config.lol}&name=${q}`, `${q}.jpg`, '', id)
-                    .then(() => console.log('Success creating image!'))
-                    .catch(async (err) => {
-                        console.error(err)
-                        await zc.reply(from, 'Error!', id)
-                    })
-            break 
 
             case 'whatis':
                 if (!isRegistered) return await zc.reply(from, msg.notRegistered(), id)
@@ -3854,6 +2852,7 @@ Sorry You lost`, id)
                 if (!isBotGroupAdmins) return await zc.reply(from, msg.botNotAdmin(), id)
                 if (mentionedJidList.length === 0) return await zc.reply(from, msg.wrongFormat(), id)
                 if (mentionedJidList[0] === botNumber) return await zc.reply(from, msg.wrongFormat(), id)
+                if (mentionedJidList[0] === isOwner) return await zc.reply(from, "⌬ Hayo mau ngapain lu?", id)
                 if (limit.isLimit(senderr, _limit, limitCount, isPremium, isOwner)) return await zc.reply(from, msg.limit(), id)
                 limit.addLimit(senderr, _limit, isPremium, isOwner)
                 await zc.sendTextWithMentions(from, `⌬ Sampai jumpa\n${mentionedJidList.map(x => `@${x.replace('@c.us', '')}`).join('\n')}`)
